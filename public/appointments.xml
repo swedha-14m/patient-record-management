@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppointmentSchedule xmlns="http://hospital.example.org/appointments"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://hospital.example.org/appointments appointments.xsd">
+  <ScheduleMetadata>
+    <HospitalName>Apex General Hospital &amp; Medical Research Institute</HospitalName>
+    <ExportDate>2026-10-27</ExportDate>
+    <TotalAppointments>3</TotalAppointments>
+    <SystemVersion>PRMS v2.4 (College Web Tech Edition)</SystemVersion>
+  </ScheduleMetadata>
+  <Appointments>
+    <Appointment>
+      <AppointmentID>APT-2026-001</AppointmentID>
+      <PatientID>PAT-2026-002</PatientID>
+      <PatientName>Marcus Sterling</PatientName>
+      <DoctorID>DOC-101</DoctorID>
+      <DoctorName>Dr. Sarah Jenkins</DoctorName>
+      <Department>Cardiology &amp; Vascular</Department>
+      <AppointmentDate>2026-10-28</AppointmentDate>
+      <TimeSlot>10:00 AM</TimeSlot>
+      <Priority>Routine</Priority>
+      <Status>Scheduled</Status>
+      <Reason>Bi-annual cardiology post-stent evaluation and stress ECG review.</Reason>
+      <Notes>Advised fasting lipid panel prior to appointment.</Notes>
+      <CreatedAt>2026-10-27T06:00:00.000Z</CreatedAt>
+    </Appointment>
+
+    <Appointment>
+      <AppointmentID>APT-2026-002</AppointmentID>
+      <PatientID>PAT-2026-003</PatientID>
+      <PatientName>Aria Chen</PatientName>
+      <DoctorID>DOC-102</DoctorID>
+      <DoctorName>Dr. Rajesh Nair</DoctorName>
+      <Department>Neurology &amp; Stroke Unit</Department>
+      <AppointmentDate>2026-10-29</AppointmentDate>
+      <TimeSlot>11:30 AM</TimeSlot>
+      <Priority>Urgent</Priority>
+      <Status>Scheduled</Status>
+      <Reason>Recurrent severe migraines resistant to standard triptan therapy.</Reason>
+      <Notes>Patient asked to bring headache log from the past 3 months.</Notes>
+      <CreatedAt>2026-10-27T06:15:00.000Z</CreatedAt>
+    </Appointment>
+
+    <Appointment>
+      <AppointmentID>APT-2026-003</AppointmentID>
+      <PatientID>PAT-2026-001</PatientID>
+      <PatientName>Eleanor Vance</PatientName>
+      <DoctorID>DOC-101</DoctorID>
+      <DoctorName>Dr. Sarah Jenkins</DoctorName>
+      <Department>Cardiology &amp; Vascular</Department>
+      <AppointmentDate>2026-10-25</AppointmentDate>
+      <TimeSlot>09:30 AM</TimeSlot>
+      <Priority>Follow-up</Priority>
+      <Status>Completed</Status>
+      <Reason>Blood pressure spike monitoring and anti-hypertensive dose adjustment.</Reason>
+      <Notes>BP stabilized at 124/82. Continued current regimen.</Notes>
+      <CreatedAt>2026-10-25T09:00:00.000Z</CreatedAt>
+    </Appointment>
+  </Appointments>
+</AppointmentSchedule>

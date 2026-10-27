@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://hospital.example.org/appointments"
+           xmlns="http://hospital.example.org/appointments"
+           elementFormDefault="qualified">
+
+  <!-- Root element -->
+  <xs:element name="AppointmentSchedule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ScheduleMetadata" type="ScheduleMetadataType"/>
+        <xs:element name="Appointments">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Appointment" type="AppointmentType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Metadata Type -->
+  <xs:complexType name="ScheduleMetadataType">
+    <xs:sequence>
+      <xs:element name="HospitalName" type="xs:string"/>
+      <xs:element name="ExportDate" type="xs:string"/>
+      <xs:element name="TotalAppointments" type="xs:integer"/>
+      <xs:element name="SystemVersion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Appointment Type -->
+  <xs:complexType name="AppointmentType">
+    <xs:sequence>
+      <xs:element name="AppointmentID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="APT-[0-9]{4}-[0-9]{3,4}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PatientID" type="xs:string"/>
+      <xs:element name="PatientName">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="2"/>
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="DoctorID" type="xs:string"/>
+      <xs:element name="DoctorName" type="xs:string"/>
+      <xs:element name="Department" type="xs:string"/>
+      <xs:element name="AppointmentDate">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="TimeSlot" type="xs:string"/>
+      <xs:element name="Priority">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Routine"/>
+            <xs:enumeration value="Urgent"/>
+            <xs:enumeration value="Follow-up"/>
+            <xs:enumeration value="Emergency"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Status">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Scheduled"/>
+            <xs:enumeration value="In-Progress"/>
+            <xs:enumeration value="Completed"/>
+            <xs:enumeration value="Cancelled"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Reason" type="xs:string"/>
+      <xs:element name="Notes" type="xs:string" minOccurs="0"/>
+      <xs:element name="CancellationReason" type="xs:string" minOccurs="0"/>
+      <xs:element name="CreatedAt" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

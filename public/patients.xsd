@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://hospital.example.org/patients"
+           xmlns="http://hospital.example.org/patients"
+           elementFormDefault="qualified">
+
+  <!-- Root element -->
+  <xs:element name="HospitalRecords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="HospitalMetadata" type="HospitalMetadataType"/>
+        <xs:element name="Patients">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Patient" type="PatientType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Metadata Type -->
+  <xs:complexType name="HospitalMetadataType">
+    <xs:sequence>
+      <xs:element name="HospitalName" type="xs:string"/>
+      <xs:element name="ExportDate" type="xs:string"/>
+      <xs:element name="TotalPatients" type="xs:integer"/>
+      <xs:element name="SystemVersion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Patient Record Type -->
+  <xs:complexType name="PatientType">
+    <xs:sequence>
+      <xs:element name="PatientID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="PAT-[0-9]{4}-[0-9]{3,4}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="FullName">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="2"/>
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Age">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="130"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Gender">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Male"/>
+            <xs:enumeration value="Female"/>
+            <xs:enumeration value="Other"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="BloodGroup">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="A+"/>
+            <xs:enumeration value="A-"/>
+            <xs:enumeration value="B+"/>
+            <xs:enumeration value="B-"/>
+            <xs:enumeration value="AB+"/>
+            <xs:enumeration value="AB-"/>
+            <xs:enumeration value="O+"/>
+            <xs:enumeration value="O-"/>
+            <xs:enumeration value="Unknown"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Contact">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Phone" type="xs:string"/>
+            <xs:element name="Email" type="xs:string"/>
+            <xs:element name="Address" type="xs:string"/>
+            <xs:element name="EmergencyContact" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ClinicalDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="MedicalHistory" type="xs:string"/>
+            <xs:element name="Allergies" type="xs:string" minOccurs="0"/>
+            <xs:element name="RegistrationDate" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="status" type="xs:string" use="optional" default="Active"/>
+  </xs:complexType>
+
+</xs:schema>

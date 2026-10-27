@@ -1,0 +1,83 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isHospitalStaff() {
+      return isSignedIn();
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Patients collection
+    match /patients/{patientDocId} {
+      allow read: if isHospitalStaff();
+      allow create: if isHospitalStaff()
+        && request.resource.data.patientId is string
+        && request.resource.data.fullName is string
+        && request.resource.data.fullName.size() > 0
+        && request.resource.data.fullName.size() <= 100;
+      allow update: if isHospitalStaff()
+        && request.resource.data.patientId is string
+        && request.resource.data.fullName is string
+        && request.resource.data.fullName.size() > 0;
+      allow delete: if isHospitalStaff();
+
+      // Activity logs subcollection (Audit Trail)
+      match /activityLogs/{logDocId} {
+        allow read: if isHospitalStaff();
+        allow create: if isHospitalStaff()
+          && request.resource.data.action is string
+          && request.resource.data.summary is string
+          && request.resource.data.summary.size() <= 300;
+        allow update, delete: if isHospitalStaff();
+      }
+    }
+
+    // Doctors collection
+    match /doctors/{doctorDocId} {
+      allow read: if isHospitalStaff();
+      allow create: if isHospitalStaff()
+        && request.resource.data.doctorId is string
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0;
+      allow update: if isHospitalStaff()
+        && request.resource.data.doctorId is string
+        && request.resource.data.name is string;
+      allow delete: if isHospitalStaff();
+    }
+
+    // Appointments collection
+    match /appointments/{appointmentDocId} {
+      allow read: if isHospitalStaff();
+      allow create: if isHospitalStaff()
+        && request.resource.data.appointmentId is string
+        && request.resource.data.patientId is string
+        && request.resource.data.doctorId is string;
+      allow update: if isHospitalStaff()
+        && request.resource.data.appointmentId is string;
+      allow delete: if isHospitalStaff();
+    }
+
+    // Staff collection
+    match /staff/{staffDocId} {
+      allow read: if isHospitalStaff();
+      allow write: if isHospitalStaff();
+    }
+
+    // Test connection doc
+    match /test/{docId} {
+      allow read, write: if isSignedIn();
+    }
+  }
+}

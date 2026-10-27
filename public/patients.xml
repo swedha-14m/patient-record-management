@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HospitalRecords xmlns="http://hospital.example.org/patients"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://hospital.example.org/patients patients.xsd">
+  <HospitalMetadata>
+    <HospitalName>Apex General Hospital &amp; Medical Research Institute</HospitalName>
+    <ExportDate>2026-10-27</ExportDate>
+    <TotalPatients>4</TotalPatients>
+    <SystemVersion>PRMS v2.4 (College Web Tech Edition)</SystemVersion>
+  </HospitalMetadata>
+  <Patients>
+    <Patient status="Active">
+      <PatientID>PAT-2026-001</PatientID>
+      <FullName>Eleanor Vance</FullName>
+      <Age>42</Age>
+      <Gender>Female</Gender>
+      <BloodGroup>O+</BloodGroup>
+      <Contact>
+        <Phone>+1 (555) 234-5678</Phone>
+        <Email>eleanor.vance@example.com</Email>
+        <Address>742 Evergreen Terrace, Springfield, IL</Address>
+        <EmergencyContact>Arthur Vance (+1 555-234-9988)</EmergencyContact>
+      </Contact>
+      <ClinicalDetails>
+        <MedicalHistory>Type 2 Diabetes, Mild Hypertension controlled with Metformin.</MedicalHistory>
+        <Allergies>Penicillin, Shellfish</Allergies>
+        <RegistrationDate>2026-01-15</RegistrationDate>
+      </ClinicalDetails>
+    </Patient>
+
+    <Patient status="Active">
+      <PatientID>PAT-2026-002</PatientID>
+      <FullName>Marcus Sterling</FullName>
+      <Age>58</Age>
+      <Gender>Male</Gender>
+      <BloodGroup>A-</BloodGroup>
+      <Contact>
+        <Phone>+1 (555) 876-5432</Phone>
+        <Email>marcus.sterling@example.org</Email>
+        <Address>1204 Oakridge Blvd, Chicago, IL</Address>
+        <EmergencyContact>Clara Sterling (+1 555-876-0011)</EmergencyContact>
+      </Contact>
+      <ClinicalDetails>
+        <MedicalHistory>Coronary Artery Disease, Prior Angioplasty (2023). Regular cardiac check-ups.</MedicalHistory>
+        <Allergies>Sulfa antibiotics</Allergies>
+        <RegistrationDate>2026-02-10</RegistrationDate>
+      </ClinicalDetails>
+    </Patient>
+
+    <Patient status="Active">
+      <PatientID>PAT-2026-003</PatientID>
+      <FullName>Aria Chen</FullName>
+      <Age>29</Age>
+      <Gender>Female</Gender>
+      <BloodGroup>B+</BloodGroup>
+      <Contact>
+        <Phone>+1 (555) 432-1098</Phone>
+        <Email>aria.chen@example.edu</Email>
+        <Address>315 Lakeview Avenue, Evanston, IL</Address>
+        <EmergencyContact>David Chen (+1 555-432-9090)</EmergencyContact>
+      </Contact>
+      <ClinicalDetails>
+        <MedicalHistory>Seasonal Allergic Rhinitis, Occasional Migraines with aura.</MedicalHistory>
+        <Allergies>Aspirin, Ibuprofen</Allergies>
+        <RegistrationDate>2026-03-05</RegistrationDate>
+      </ClinicalDetails>
+    </Patient>
+
+    <Patient status="Active">
+      <PatientID>PAT-2026-004</PatientID>
+      <FullName>Jameson Hayes</FullName>
+      <Age>65</Age>
+      <Gender>Male</Gender>
+      <BloodGroup>AB+</BloodGroup>
+      <Contact>
+        <Phone>+1 (555) 654-9870</Phone>
+        <Email>jameson.hayes@example.com</Email>
+        <Address>88 Meadowbrook Lane, Naperville, IL</Address>
+        <EmergencyContact>Sarah Hayes (+1 555-654-1234)</EmergencyContact>
+      </Contact>
+      <ClinicalDetails>
+        <MedicalHistory>Osteoarthritis of right knee, mild Hyperlipidemia.</MedicalHistory>
+        <Allergies>None reported</Allergies>
+        <RegistrationDate>2026-04-18</RegistrationDate>
+      </ClinicalDetails>
+    </Patient>
+  </Patients>
+</HospitalRecords>
